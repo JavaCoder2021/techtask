@@ -24,7 +24,7 @@ public class OrderServiceImpl implements OrderService {
                 SELECT o
                 FROM Order o
                 JOIN User u
-                    ON (o.userId = u.id)
+                    ON o.userId = u.id
                 WHERE CAST(u.userStatus AS text) = CAST(:userStatus AS text)
                 ORDER BY o.createdAt
             """;

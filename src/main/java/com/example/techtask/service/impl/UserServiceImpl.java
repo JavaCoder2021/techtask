@@ -17,8 +17,8 @@ public class UserServiceImpl implements UserService {
                     SELECT u
                     FROM User u
                     JOIN Order o
-                        ON (u.id = o.userId)
-                    WHERE EXTRACT(YEAR FROM o.createdAt) = :year
+                        ON u.id = o.userId
+                    WHERE YEAR(o.createdAt) = :year
                         AND
                           CAST(o.orderStatus AS text) = CAST(:orderStatus AS text)
                     GROUP BY u.id
